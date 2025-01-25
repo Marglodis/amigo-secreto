@@ -10,9 +10,21 @@ function agregarAmigo() {
     }
     else {
 
-        console.log("Agregar amigo secreto..!!!", amigoSecreto);
+        console.log("Amigo secreto: ", amigoSecreto);
         amigos.push(amigoSecreto);
+        actualizarLista();
         inputAmigo.value = "";
     }
 
+}
+
+function actualizarLista() {
+    const listaAmigos = document.querySelector('#listaAmigos');
+    listaAmigos.innerHTML = '';
+
+    amigos.forEach((amigo, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${index + 1}. ${amigo}`;
+        listaAmigos.appendChild(listItem);
+    });
 }
